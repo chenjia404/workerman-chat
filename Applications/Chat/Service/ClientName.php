@@ -38,7 +38,7 @@ class ClientName
 		//昵称数据保存在一个json文件里面
 		if(!file_exists($this->getFilename()))
 		{
-			file_put_contents($this->getFilename(),json_encode([]));
+			file_put_contents($this->getFilename(),json_encode(array()));
 		}
 
 		$this->client_name_list = json_decode(file_get_contents($this->getFilename()),true);
@@ -81,6 +81,6 @@ class ClientName
 	 */
 	public function removeAll()
 	{
-		file_put_contents($this->getFilename(),json_encode([]));
+		file_put_contents($this->getFilename(),json_encode(array()));
 	}
 }
