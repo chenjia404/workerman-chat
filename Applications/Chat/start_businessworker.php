@@ -31,7 +31,7 @@ $worker->onWorkerStart = function($worker)
 	$dotenv->load();
 
 	// 将db实例存储在全局变量中(也可以存储在某类的静态成员中)
-	if(getenv("CHAT_LOG_TYPE"))
+	if(getenv("CHAT_LOG_TYPE") == "mysql")
 	{
 		global $db;
 		$db = new Workerman\MySQL\Connection(getenv('DB_HOST'), getenv('DB_PORT'), getenv("DB_USERNAME"), getenv("DB_PASSWORD"), getenv("DB_DATABASE"));
