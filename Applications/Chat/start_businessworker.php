@@ -26,6 +26,9 @@ $worker->registerAddress = '127.0.0.1:1236';
 
 $worker->onWorkerStart = function($worker)
 {
+    if(!file_exists(dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR . ".env"))
+        copy(dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR  . '.env.example', '.env');
+
 	//加载env文件
 	$dotenv = new Dotenv\Dotenv(dirname(dirname(__DIR__)));
 	$dotenv->load();
