@@ -38,7 +38,7 @@ class ClientName
 		//昵称数据保存在一个json文件里面
 		if(!file_exists($this->getFilename()))
 		{
-			file_put_contents($this->getFilename(),json_encode([]));
+			file_put_contents($this->getFilename(),json_encode(array()));
 		}
 
 		$this->client_name_list = json_decode(file_get_contents($this->getFilename()),true);
@@ -50,7 +50,7 @@ class ClientName
 	 * @param string $name    客户端昵称
 	 * @return bool
 	 */
-	public function exists(int $room_id,$name):bool
+	public function exists($room_id,$name)
 	{
 		return isset($this->client_name_list[ $room_id ][ $name ]);
 	}
@@ -58,7 +58,7 @@ class ClientName
 	/**
 	 * 记录房间昵称
 	 */
-	public function add(int $room_id,$name)
+	public function add($room_id,$name)
 	{
 		$this->client_name_list[ $room_id ][ $name ] = true;
 		file_put_contents($this->getFilename(),json_encode($this->client_name_list));
@@ -70,7 +70,7 @@ class ClientName
 	 * @param int $room_id
 	 * @param     $name
 	 */
-	public function remove(int $room_id,$name)
+	public function remove($room_id,$name)
 	{
 		unset($this->client_name_list[ $room_id ][ $name ]);
 		file_put_contents($this->getFilename(),json_encode($this->client_name_list));
@@ -81,6 +81,6 @@ class ClientName
 	 */
 	public function removeAll()
 	{
-		file_put_contents($this->getFilename(),json_encode([]));
+		file_put_contents($this->getFilename(),json_encode(array()));
 	}
 }

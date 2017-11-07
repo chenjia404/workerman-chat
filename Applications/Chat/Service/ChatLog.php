@@ -33,11 +33,11 @@ class ChatLog
 	protected function addToFile($ip,$name,$content)
 	{
 		//记录聊天日志文件
-		$log = ['ip'=>$ip,
+		$log = array('ip'=>$ip,
 		        'name'=>$name,
 		        'content'=>$content,
 		        'time'=>date('Y-m-d H:i:s')
-		];
+		);
 
 		$log_dir = getenv("CHAT_LOG_DIR");
 		if(!file_exists($log_dir))
@@ -56,11 +56,11 @@ class ChatLog
 	{
 		global $db;
 		// 插入
-		$db->insert('chat_logs')->cols([
+		$db->insert('chat_logs')->cols(array(
 			'ip'      => $ip,
 			'name'=>$name,
 			'content'=>$content,
 			'time'=>date('Y-m-d H:i:s')
-		])->query();
+		))->query();
 	}
 }
