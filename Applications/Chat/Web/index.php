@@ -151,7 +151,8 @@
         }
         );
 
-    	$("#dialog").append('<div class="speech_item"><img src="http://lorempixel.com/38/38/?'+from_client_id+'" class="user_icon" /> '+from_client_name+' <br> '+time+'<div style="clear:both;"></div><p class="triangle-isosceles top">'+content+'</p> </div>').parseEmotion();
+    	$("#dialog").append('<div class="speech_item"><img src="https://tva3.sinaimg.cn/crop.19.12.155.155.180/659c6c35gw1f3swxjt6ooj2050050q30.jpg" class="user_icon" /> '+from_client_name+' <br> '+time+'<div style="clear:both;"></div><p class="triangle-isosceles top">'+content+'</p> </div>').parseEmotion();
+        $('#dialog').animate({scrollTop: $(document).height()}, 300);
     }
 
     $(function(){
@@ -162,6 +163,12 @@
         $('.face').click(function(event){
             $(this).sinaEmotion();
             event.stopPropagation();
+        });
+
+        $(document).keyup(function(event){
+            if(event.keyCode ==13){
+                $("#submit").trigger("click");
+            }
         });
     });
 
@@ -184,7 +191,7 @@
                     <textarea class="textarea thumbnail" id="textarea"></textarea>
                     <div class="say-btn">
                         <input type="button" class="btn btn-default face pull-left" value="表情" />
-                        <input type="submit" class="btn btn-default" value="发表" />
+                        <input id="submit" type="submit" class="btn btn-default" value="发表" />
                     </div>
                </form>
                <div>
