@@ -101,7 +101,7 @@ body
 }
 
 .speech_item img{
-    max-height: 300px;
+    max-height: 50px;
     display: block;
     margin-top: 5px;
     margin-bottom: 10px;
